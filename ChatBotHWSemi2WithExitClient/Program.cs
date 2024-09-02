@@ -8,18 +8,20 @@ namespace ChatBotHWSemi2WithExitClient
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Console.WriteLine("Hello Please enter your name: ");
 
-           string nick = Console.ReadLine();
+           string nickName = Console.ReadLine();
 
-            while (String.IsNullOrEmpty(nick))
+            while (String.IsNullOrEmpty(nickName))
             {
                 Console.WriteLine("Please enter your name: ");
-                nick = Console.ReadLine();
+                nickName = Console.ReadLine();
             }
-            Client.ClientStartInThread(nick);
+
+
+           await Client.SendMessage(nickName);
         }
     }
 }
